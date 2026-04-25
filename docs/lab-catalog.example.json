@@ -1,0 +1,10 @@
+{
+  "foundry-agents-lab": {
+    "repoUrl": "https://github.com/<owner>/<repo>",
+    "repoBranch": "main",
+    "readmePath": "labs/foundry-agents-lab/README.md",
+    "instructionsTitle": "Azure AI Foundry & Agents Lab Guide",
+    "instructionsGuardrails": "Stay within the provided subscription and project for this session. Do not create resources outside your assigned resource group.",
+    "studentRgTemplateSpecVersionId": "/subscriptions/<subId>/resourceGroups/rg-lab-infra/providers/Microsoft.Resources/templateSpecs/foundry-agents-lab-student-resources/versions/v1"
+  }
+}
