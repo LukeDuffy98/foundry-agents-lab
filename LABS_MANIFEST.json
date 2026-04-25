@@ -1,0 +1,72 @@
+{
+  "labId": "foundry-agents-lab",
+  "title": "Azure AI Foundry & Agents Lab",
+  "delivery": "LabDesktops",
+  "repoBranch": "main",
+  "studentReadmePath": "labs/foundry-agents-lab/README.md",
+  "instructionsTitle": "Azure AI Foundry & Agents Lab Guide",
+  "durationMinutes": 75,
+  "audience": "Very low prior knowledge",
+  "flow": [
+    {
+      "id": "orientation",
+      "title": "Orientation and environment check",
+      "required": true
+    },
+    {
+      "id": "model-deployment",
+      "title": "Create a model deployment",
+      "required": true
+    },
+    {
+      "id": "agent-instructions",
+      "title": "Create an agent and add instructions",
+      "required": true
+    },
+    {
+      "id": "knowledge",
+      "title": "Add knowledge for grounded responses",
+      "required": true
+    },
+    {
+      "id": "refine-instructions",
+      "title": "Refine instructions to shape behaviour",
+      "required": true
+    },
+    {
+      "id": "tools",
+      "title": "Add a tool and update instructions",
+      "required": true
+    },
+    {
+      "id": "guardrails",
+      "title": "Apply guardrails and content filters",
+      "required": true
+    },
+    {
+      "id": "observability",
+      "title": "Explore traces, risks, and alerts",
+      "required": true
+    },
+    {
+      "id": "capability-awareness",
+      "title": "Capability awareness overview",
+      "required": false
+    },
+    {
+      "id": "wrap-up",
+      "title": "Wrap-up and next steps",
+      "required": true
+    }
+  ],
+  "sharedResources": [
+    "Azure AI Foundry hub or project host",
+    "Shared model deployment",
+    "Workshop knowledge file",
+    "Any quota-sensitive or expensive Azure resources"
+  ],
+  "perStudentResources": [
+    "Student resource group",
+    "Optional lightweight storage account or other isolated resources defined in Bicep"
+  ]
+}

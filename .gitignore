@@ -1,0 +1,29 @@
+# Local environment files
+.env
+.env.*
+dev.env
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+
+# Generated infrastructure outputs
+*.bicepparam
+*.parameters.json
+*.tfstate
+*.tfstate.*
+
+# Credentials and exported secrets
+credentials/
+secrets/
+*.pfx
+*.pem
+*.key
+
+# Workshop exports and recordings
+exports/
+recordings/
+
+# Python cache
+__pycache__/
+*.pyc
