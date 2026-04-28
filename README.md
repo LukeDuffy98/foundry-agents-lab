@@ -2,7 +2,7 @@
 
 This guide is written for delivery inside LabDesktops.
 
-Use the banner shown in the desktop for your lab credentials, guardrails, and any session-specific notes. Do not switch to a different browser profile during the workshop unless the facilitator asks you to.
+Your lab credentials (username and password) are provided in **Lab 0, Step 3**. Do not switch to a different browser profile during the workshop unless instructed to do so.
 
 ## Overview
 
@@ -53,7 +53,7 @@ To keep the workshop focused on the hands-on workflow, the environment is prepar
 
 You should already have:
 
-1. **Lab account and credentials** — Displayed in the banner at the top of your lab desktop.
+1. **Lab account and credentials** — Your username and password are provided in Lab 0, Step 3.
 2. **Azure subscription access** — Your lab account has the necessary permissions.
 3. **Personal Azure AI Foundry project** — Auto-provisioned and accessible via the desktop launcher.
 4. **Shared `gpt-4o` model deployment** — Pre-configured and ready to use (deployment name: **`gpt-4o`**).
@@ -104,46 +104,180 @@ You will build and iterate on a single AI agent throughout all nine labs. Each s
 
 ## Step-By-Step Instructions
 
-### Step 1 — Open A Clean Browser Session
+### Step 1 — Open A Private/Incognito Browser Window
 
-1. Use the browser already provided in the lab desktop.
-2. If you need to open a fresh session, use a new InPrivate or Incognito window.
-3. Do not reuse a browser window that may already be signed in with your personal or company account.
+A private or incognito browser window ensures you sign in with your **lab account** only, without interference from any personal Microsoft accounts you may already be signed into.
 
-> **What success looks like:** You have a clean browser session ready for lab sign-in.
+**If you're using Microsoft Edge:**
+1. Look at the top of your screen for the Microsoft Edge icon (blue and green wave).
+2. Click on the Edge icon in your taskbar (bottom of screen).
+3. Once Edge opens, look at the top-right corner for three dots (**...**) — this is the menu button.
+4. Click the three dots.
+5. In the menu that appears, look for **"New InPrivate window"** (it has a small icon that looks like a mask or glasses).
+6. Click **"New InPrivate window"**.
+7. A new dark-themed window opens with "InPrivate" shown at the top-left corner.
 
-### Step 2 — Open Your Foundry Project
+**If you're using Google Chrome:**
+1. Look for the Chrome icon (red, yellow, green, and blue circle) on your desktop or taskbar.
+2. Click the Chrome icon to open it.
+3. Look at the top-right corner for three vertical dots (**⋮**) — this is the menu button.
+4. Click the three dots.
+5. In the menu, look for **"New Incognito window"** (it has a small icon of a hat and glasses).
+6. Click **"New Incognito window"**.
+7. A new dark window opens with "You've gone incognito" shown at the top.
 
-1. On your lab desktop, locate and double-click the **"Foundry Project"** launcher icon.
-2. This will open Microsoft Edge and navigate directly to your personal Azure AI Foundry project.
-3. Sign in with your lab account credentials if prompted:
-   - **Username**: Shown in the LabDesktops banner at the top of your screen
-   - **Password**: Provided by your facilitator or shown in the banner
-4. If asked whether to stay signed in, choose **Yes** to avoid repeated sign-in prompts.
+**If you're using Firefox:**
+1. Look for the Firefox icon (orange/purple fox) on your desktop or taskbar.
+2. Click the Firefox icon to open it.
+3. Look at the top-right corner for three horizontal lines (hamburger menu **≡**).
+4. Click the three lines.
+5. In the menu, look for **"New private window"** (it has a small purple mask icon).
+6. Click **"New private window"**.
+7. A new dark purple window opens with a mask icon showing you're in private browsing.
 
-> **What success looks like:** Microsoft Edge opens and displays your Azure AI Foundry project home page.
+> **What success looks like:** You have a new private/incognito browser window open. It should look different from regular windows (usually darker theme) and indicate "InPrivate", "Incognito", or show a private browsing icon.
 
-### Step 3 — Brief UI Orientation
+> **Why this matters:** Private browsing prevents confusion between your personal Microsoft account and your lab account. It gives you a "clean slate" for signing in.
 
-1. Once your Foundry project is open, review the left navigation panel. You should see:
+### Step 2 — Navigate To The Azure Portal
+
+1. In your private/incognito browser window, click in the **address bar** at the top (the long white bar where website addresses go).
+2. Type exactly: **https://portal.azure.com**
+3. Press **Enter** on your keyboard.
+4. Wait while the page loads. You should see the Azure portal sign-in screen.
+
+> **What you should see:** A Microsoft sign-in page with a field asking for your email, phone, or Skype account.
+
+### Step 3 — Sign In With Your Lab Account
+
+Your lab account credentials are:
+
+- **Username**: `[YOUR-LAB-USERNAME]`
+- **Password**: `[YOUR-LAB-PASSWORD]`
+
+Now let's sign in:
+
+1. In the sign-in page, you'll see a field asking for your email, phone, or Skype account.
+
+2. Type your **lab username** exactly as shown above: `[YOUR-LAB-USERNAME]`
+   - Do NOT use your personal email address
+   - Do NOT use your company email address
+   - Use only the lab username provided above
+
+3. Click **Next**.
+
+4. On the password page, you'll see a field asking for your password.
+
+5. Type your **lab password** exactly as shown above: `[YOUR-LAB-PASSWORD]`
+   - Be careful with uppercase/lowercase letters — passwords are case-sensitive
+   - You can copy and paste the password from above if that's easier
+
+6. Click **Sign in**.
+
+7. If you see a prompt asking "Stay signed in?" or "Keep me signed in?", click **Yes**. This prevents repeated sign-in prompts during the lab.
+
+> **What success looks like:** After signing in, the Azure portal home page loads. You should see "Microsoft Azure" at the top, a search bar, and various tiles showing Azure services.
+
+### Step 4 — Navigate To Your Azure AI Foundry Project
+
+In this step, you'll navigate through Azure Resource Groups to find your AI Foundry project. This helps you understand that your AI project is a **real Azure resource** with full Azure security, IAM (Identity and Access Management), and integration with the Azure ecosystem.
+
+1. In the Azure portal, look at the **top of the page** for a search bar (white box that says "Search resources, services, and docs").
+
+2. Click in the search bar.
+
+3. Type: **Resource groups**
+
+4. As you type, a dropdown list appears below. Look for:
+   - **Resource groups** (with a folder/cube icon)
+   - It might say "Services" underneath
+
+5. Click on **Resource groups** from the search results.
+
+6. The Resource groups page loads. You should see a list of resource groups.
+   - You should see **exactly ONE resource group** in the list
+   - The resource group name will start with **`rg-lab-student-foundry-age-`** followed by a unique ID
+   - Example: `rg-lab-student-foundry-age-c86b8dc7`
+
+7. Click on your resource group name to open it.
+
+8. Inside the resource group, you'll see a list of resources (the Azure services inside this group).
+   - You should see **exactly ONE Azure AI project** in the list
+   - The resource **Type** column will say **Azure AI project**
+   - The **Name** column will start with **`proj-`** followed by a unique identifier
+   - Example: `proj-emethandufp32ira`
+
+9. Click on the Azure AI project name to open it.
+
+10. The project overview page loads. You should see:
+    - The project name at the top
+    - An **Essentials** section showing Resource group, Location, Subscription
+    - A section titled **"Start building in Azure AI Foundry"** with a purple/blue logo
+    - A blue button that says **"Launch studio"**
+
+11. Click the **"Launch studio"** button.
+
+12. Wait while AI Studio opens in a new tab or window.
+    - You should now see the **Azure AI Foundry Studio** interface
+    - The left navigation shows options like **Home**, **Agents**, **Models + endpoints**, **Playgrounds**, etc.
+    - Your project name appears at the top
+
+> **What success looks like:** You're now inside Azure AI Foundry Studio with your project open. The left navigation shows **Home**, **Agents**, **Models + endpoints**, **Playgrounds**, **Tracing**, and other options.
+
+> **Why this path matters:** By navigating through Resource Groups, you can see that your AI project is a standard Azure resource. It lives in a resource group alongside other Azure services, has proper security controls through Azure RBAC (Role-Based Access Control), and integrates with Azure monitoring, billing, and governance. This is different from standalone AI services — Azure AI Foundry projects are **first-class Azure citizens**.
+
+> **🚨 Alternative Method (If You Have Trouble):** If the Resource Groups path doesn't work, navigate directly to AI Foundry:
+> 1. In the address bar, type: **https://ai.azure.com/**
+> 2. Press **Enter**
+> 3. Sign in with your lab credentials if prompted:
+>    - Username: `[YOUR-LAB-USERNAME]`
+>    - Password: `[YOUR-LAB-PASSWORD]`
+> 4. Select your project from the list (starts with `proj-`)
+> 5. Your project will open in AI Foundry Studio
+
+### Step 5 — Brief UI Orientation
+
+1. Once your Foundry project is open, look at the **left side of the screen**. You should see a vertical navigation panel (a list of menu items).
+
+2. In this left navigation, you should see these options:
    - **Home** — Project overview and quick start options
-   - **Agents** — Where you'll create and manage your AI agent
-   - **Models + endpoints** — Shows the shared `gpt-4o` deployment available to you
+   - **Agents** — Where you'll create and manage your AI agent (Lab 2)
+   - **Models + endpoints** — Shows the shared `gpt-4o` deployment available to you (Lab 1)
    - **Playgrounds** — Chat, Completions, and other testing areas
-   - **Tracing** — Observability and monitoring (used in Lab 7)
-   - **Files** — Where you'll upload knowledge files
+   - **Tracing** or **Monitoring** — Observability features (Lab 7)
+   - **Files** or **Data** — Where you'll upload knowledge files (Lab 3)
 
-2. In the top-right corner, confirm your lab account name is displayed (not your personal Microsoft account).
+3. Look at the **top-right corner** of the screen. You should see:
+   - Your name or email address
+   - An account icon or profile picture
+   - **Important:** Verify this shows your **lab account** (`[YOUR-LAB-USERNAME]`), NOT your personal Microsoft account
 
-3. Click **Models + endpoints** in the left navigation.
-   - You should see a deployment named **`gpt-4o`** with status **Succeeded** or **Running**.
-   - Note: You **cannot create new deployments** — this is expected and correct.
+4. Let's verify the model deployment is available:
+   - In the left navigation, click **Models + endpoints**
+   - Wait for the page to load
+   - Look for a deployment named **`gpt-4o`** in the list
+   - The **Status** column should show **Succeeded**, **Running**, or a green checkmark
+   - This confirms the shared model is available and ready
 
-4. Return to the **Home** page.
+5. Return to the **Home** page by clicking **Home** in the left navigation.
 
-> **What success looks like:** You can navigate the Foundry portal, see the `gpt-4o` deployment, and confirm your lab account is active.
+> **What success looks like:** You can navigate the Foundry portal, see the `gpt-4o` deployment in the Models list, and confirm your lab account name is displayed in the top-right corner.
 
-> **🚨 Common Issue:** If you see "You don't have access to this project", check the account name in the top-right corner. If it shows your personal Microsoft account instead of your lab account, sign out completely and use an InPrivate/Incognito window to sign in again with your lab credentials.
+> **🚨 Common Issue — Wrong Account Signed In:**  
+> If the top-right corner shows your **personal Microsoft account** instead of your lab account (like `yourname@outlook.com` or `yourname@company.com` instead of `[YOUR-LAB-USERNAME]`):
+> 1. Click your account name in the top-right corner
+> 2. Click **Sign out**
+> 3. Close ALL browser windows completely
+> 4. Go back to **Step 1** and open a NEW private/incognito window
+> 5. Navigate to portal.azure.com again and sign in ONLY with your lab account
+>
+> **Why this happens:** If you were previously signed into Azure with your personal account, the browser might auto-select that account. Private browsing prevents this.
+
+> **🚨 Common Issue — "You Don't Have Access To This Project":**  
+> If you see an error message saying you don't have access:
+> 1. Verify you're signed in with your **lab account** (check top-right corner)
+> 2. Confirm with your facilitator that your lab account has been properly provisioned
+> 3. Try the desktop launcher method as backup (double-click "Foundry Project" icon on desktop)
 
 ## Key Message
 
@@ -278,15 +412,44 @@ Instructions define the agent's role, scope, tone, and limits. Adding them is th
 
 ## Step-By-Step Instructions
 
-### Step 1 — Navigate To The Agents Area
+### Step 1 — Navigate To The Agents Area And Complete First-Time Setup
 
-1. In the left navigation of your Foundry project, click **Agents**.
-2. The Agents page opens, showing a list of existing agents (if any) and a button to create a new agent.
+1. In the left navigation of your Foundry project, look for **Agents** (it may have a "PREVIEW" label next to it).
+
+2. Click **Agents**.
+
+3. The first time you access the Agents area, you'll see a setup page titled:
+   - **"Foundry Agent Service"**
+   - **"Fast, secure enterprise agents for any business process"**
+
+4. You'll see a dropdown field labeled **"Select an Azure OpenAI resource *"**.
+
+5. Click on the dropdown. You should see exactly one option:
+   - **`hub-shared-sj3bqo-connection-azure-openai`**
+
+6. Select **`hub-shared-sj3bqo-connection-azure-openai`** from the dropdown.
+
+7. Click the **"Let's go"** button.
+
+8. Wait a moment while the system initializes. The Agents page loads, and you'll see:
+   - A green success banner at the top (saying "Success: Agent with id ... created successfully")
+   - A page titled **"Create and debug your agents"**
+   - A default agent has been automatically created (it will have a generic name like "Agent274")
+   - A **"+ New agent"** button at the top
+
+> **What just happened:** The first-time setup connected your Foundry project to the shared Azure OpenAI resource. The system automatically created a default agent to confirm the connection works. You'll create your own properly-named agent in the next step.
+
+> **What success looks like:** You're now on the Agents page with a list showing at least one default agent. The page shows columns for Name, ID, Model, Created, Description, and Tools.
 
 ### Step 2 — Create A New Agent
 
-1. Click **Create agent** or **+ New agent** (button text may vary).
-2. A creation wizard or form appears.
+Now that the setup is complete, you'll create your own properly-configured agent with a meaningful name and custom instructions.
+
+1. Look for the **"+ New agent"** button near the top of the page.
+
+2. Click **"+ New agent"**.
+
+3. A creation wizard or form appears, ready for you to configure your agent.
 
 ### Step 3 — Select The `gpt-4o` Model Deployment
 
@@ -302,14 +465,15 @@ Instructions define the agent's role, scope, tone, and limits. Adding them is th
 1. In the **Name** or **Agent name** field, enter a clear, unique name that includes your student identifier. For example:
 
    ```text
-   WorkshopAgent-student42
+   WorkshopAgent-[LabUsernamePrefix]
    ```
 
-   Replace `student42` with your actual lab account identifier (check the LabDesktops banner for your unique ID).
+   Replace `[LabUsernamePrefix]` if you are creating multiple agents across this lab.
 
-2. **Why unique names matter:** If multiple students use generic names like "MyAgent", you won't be able to identify yours easily later.
+  
 
-3. Leave the **Description** field empty for now (optional field).
+2. **Why unique names matter:** If multiple solutions or people use generic names like "MyAgent", you won't be able to identify yours easily later.
+
 
 ### Step 5 — Add System Instructions
 
@@ -318,26 +482,44 @@ Instructions define the agent's role, scope, tone, and limits. Adding them is th
 
    ```text
    You are a professional business assistant for a workshop scenario.
-   Help users understand information clearly and concisely.
-   Stay on topic. Do not invent facts, figures, or recommendations.
-   If you do not know the answer, say so clearly rather than guessing.
+   Your role is to help users understand business and technical information clearly and concisely.
+   
+   IMPORTANT BOUNDARIES:
+   - Only answer questions related to business processes, Azure AI Foundry, and workshop topics.
+   - Do NOT respond to requests for creative writing, stories, poems, or fiction.
+   - Do NOT invent facts, figures, or recommendations.
+   - If you do not know the answer, say so clearly rather than guessing.
+   - If a request is outside your scope, politely decline and remind the user of your role.
+   
    Be polite and professional in all responses.
    ```
 
-3. Review the instructions once more before saving. Notice that they define:
+3. Review the instructions once more. Notice that they define:
    - ✅ **A role**: "professional business assistant"
-   - ✅ **A scope**: "workshop scenario, clear information"
+   - ✅ **A scope**: "business and technical information, Azure AI Foundry, workshop topics"
+   - ✅ **Explicit boundaries**: "Do NOT respond to creative writing, stories, poems, or fiction"
    - ✅ **A limit**: "do not invent facts"
-   - ✅ **A behavior**: "say so clearly if you do not know"
+   - ✅ **A behavior**: "politely decline if request is outside scope"
    - ✅ **A tone**: "polite and professional"
 
-### Step 6 — Save The Agent
+> **Why explicit boundaries matter:** General instructions like "Stay on topic" can be ambiguous. By explicitly stating what the agent should NOT do ("Do NOT respond to requests for creative writing..."), you give the model clear, actionable guidance.
 
-1. Click **Create**, **Save**, or **Confirm** (button text may vary).
-2. Wait for the agent to be created. You should see a success message or be redirected to the agent's details page.
-3. If the portal has a **Playground** or **Test** area for the agent, it may open automatically.
+### Step 6 — Verify The Agent Is Ready
 
-> **What success looks like:** Your agent is created, appears in the Agents list, and shows the `gpt-4o` model and your custom instructions.
+The agent configuration **auto-saves** as you make changes — there is no manual "Save" or "Create" button to click.
+
+1. Look at the agent interface. Your configuration should now show:
+   - Your agent name (e.g., `WorkshopAgent-student42`)
+   - The model: **`gpt-4o`**
+   - Your system instructions in the Instructions field
+
+2. Look for the **Playground** or **Chat** test area. It should be visible on the right side or in a separate tab/section.
+
+3. If you don't see a chat interface yet, look for a **"Test"**, **"Playground"**, or **"Chat"** tab and click it.
+
+> **What success looks like:** Your agent configuration is displayed with your name, model, and instructions. A chat interface (Playground) is available for testing.
+
+> **Note:** Changes to agent configuration are automatically saved. You don't need to click any save button — just make your edits and they're immediately applied.
 
 ### Step 7 — Test The Agent With A Simple Prompt
 
@@ -375,18 +557,28 @@ Instructions define the agent's role, scope, tone, and limits. Adding them is th
 
 > **What success looks like:** The agent acknowledges the boundary and does not fabricate an answer.
 
-### Step 9 — (Optional) Test An Out-of-Scope Prompt
+### Step 9 — Test An Out-of-Scope Prompt
 
-If time allows, test how the agent handles an off-topic request:
+Now let's test how well the agent respects the boundary instructions you just created.
 
-```text
-Write a creative story about a dragon and a wizard.
-```
+1. In the same chat area, enter this prompt:
 
-Observe whether the agent:
-- Politely declines (following "Stay on topic")
-- Provides a brief answer but reminds the user of its role
-- Or responds fully (in which case, you may want to refine instructions in Lab 4)
+   ```text
+   Write a creative story about a dragon and a wizard.
+   ```
+
+2. Send the message and wait for the response.
+
+3. Observe the agent's behavior. With the updated instructions, the agent should:
+   - ✅ **Politely decline** the request
+   - ✅ **Remind you of its role** (e.g., "I'm here to help with business and technical questions")
+   - ✅ **Suggest alternative ways** you can use it
+
+4. **Compare with previous behavior:** Without the explicit boundary instructions, the agent would provide a full creative story (like "In a distant realm cloaked in dense, silver mist..."). The new instructions make the boundaries clear and actionable.
+
+> **What success looks like:** The agent declines the creative writing request and stays within its defined role as a business assistant.
+
+> **🚨 If the agent still writes the story:** The instructions may need even more refinement. In **Lab 4**, you'll learn how to iterate on instructions to tighten boundaries further. For now, note the behavior and continue.
 
 ## Troubleshooting
 
