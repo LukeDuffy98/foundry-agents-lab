@@ -1,0 +1,55 @@
+Category,Item,Vendor/Contractor,Contract Value (USD),Payment Status,Contract Number,Start Date,Completion Date,Notes
+Launch Vehicle - Core Stage,SLS Core Stage Production,Boeing Company,"$1,200,000,000",Paid,NNM14AA01C,2021-01-15,2025-06-30,Block 1B configuration with EUS
+Launch Vehicle - Core Stage,RS-25 Engines (4 units),Aerojet Rocketdyne,"$380,000,000",Paid,NNM14AA12D,2020-09-01,2025-04-15,Reused Space Shuttle engines with modifications
+Launch Vehicle - SRBs,Solid Rocket Boosters (2),Northrop Grumman,"$480,000,000",Paid,NNM19AA09C,2021-03-10,2025-05-20,5-segment boosters derived from Shuttle
+Launch Vehicle - Upper Stage,Exploration Upper Stage,United Launch Alliance,"$340,000,000",Paid,NNM17AA18B,2021-06-01,2025-07-10,RL10C-3 engines (4 units)
+Launch Vehicle - Operations,Launch Operations & Ground Systems,Kennedy Space Center (NASA),"$80,000,000",Paid,Internal,2024-01-01,2025-09-30,Launch Complex 39B modifications and operations
+Orion Spacecraft,Orion Crew Module Production,Lockheed Martin Space,"$650,000,000",Paid,NNM17AA03C,2020-11-01,2025-06-15,Artemis III configuration with upgrades
+Orion Spacecraft,Avionics and Flight Software,Honeywell International,"$145,000,000",Paid,NNM18AA27D,2021-02-15,2025-05-01,Triple-redundant flight computers
+Orion Spacecraft,Environmental Control Systems,Collins Aerospace,"$78,000,000",Paid,NNM19AA33E,2021-04-20,2025-04-30,Life support for 30-day mission
+Orion Spacecraft,Launch Abort System,Northrop Grumman,"$27,000,000",Paid,NNM18AA41B,2021-01-10,2025-03-15,Escape system for emergency abort
+European Service Module,Service Module Delivery,European Space Agency,"$450,000,000",Paid,International Agreement,2020-08-01,2025-05-30,ESM-3 with solar arrays and propulsion
+Human Landing System,HLS Development & Production,SpaceX,"$420,000,000",Paid,HLS-21-001,2021-04-16,2025-08-20,Modified Starship for lunar landing
+Human Landing System,HLS Raptor Engines (6),SpaceX (internal),"$48,000,000",Paid,HLS-21-001 (included),2022-01-01,2024-12-30,Vacuum-optimized Raptor 2 engines
+Human Landing System,Life Support Systems,Paragon Space Development,"$32,000,000",Paid,NNM21AA67C,2021-09-01,2025-06-10,7-day surface habitat capability
+Human Landing System,Landing Legs & Structure,SpaceX (internal),"$20,000,000",Paid,HLS-21-001 (included),2022-03-15,2024-11-20,6-leg deployable landing system
+Gateway Operations,Gateway Utilization (30 days),NASA (Gateway Program),"$30,000,000",Paid,Internal,2025-09-01,2025-10-15,Habitation module and logistics support
+Mission Operations,Mission Control Operations,Johnson Space Center (NASA),"$180,000,000",Paid,Internal,2023-01-01,2025-11-30,24/7 mission support for 30 days
+Mission Operations,Deep Space Network,Jet Propulsion Laboratory (NASA),"$65,000,000",Paid,Internal,2025-01-01,2025-10-31,Communications support for mission duration
+Mission Operations,Network Operations,Various Contractors,"$28,000,000",Paid,Multiple,2024-06-01,2025-10-31,Backup communications and data relay
+Mission Operations,Software Development & Integration,KBR Inc,"$42,000,000",Paid,NNM19AA88F,2022-11-01,2025-08-30,Flight software and mission planning tools
+Crew Training,Astronaut Training Operations,Johnson Space Center (NASA),"$65,000,000",Paid,Internal,2023-01-01,2025-08-31,24 months intensive crew training
+Crew Training,Geology Field Training,USGS Partnership,"$8,000,000",Paid,Interagency Agreement,2023-03-01,2024-12-31,Iceland and Arizona field exercises
+Crew Training,EVA Training (NBL),Johnson Space Center (NASA),"$12,000,000",Paid,Internal,2023-02-01,2025-08-15,320 hours underwater EVA simulation
+Crew Training,HLS Simulator,SpaceX,"$5,000,000",Paid,HLS-21-001 (addon),2024-01-01,2025-08-01,Full-scale landing simulator
+Crew Training,NEEMO Analog Mission,Florida International University,"$5,000,000",Paid,NNM22AA45B,2023-06-01,2023-06-15,Aquarius underwater habitat mission
+Science Operations,Science Planning & Coordination,NASA Science Mission Directorate,"$45,000,000",Paid,Internal,2024-01-01,2026-12-31,Pre-mission and post-mission science support
+Science Operations,Geology Analysis Laboratory,Johnson Space Center (NASA),"$25,000,000",Paid,Internal,2025-10-01,2027-10-31,Sample curation and initial analysis
+Science Operations,Data Management & Distribution,NASA Goddard Space Flight Center,"$15,000,000",Paid,Internal,2025-01-01,2026-12-31,Mission data archive and distribution
+Recovery Operations,Recovery Ship Operations (USS Portland),U.S. Navy,"$35,000,000",Paid,Interagency Agreement,2025-09-01,2025-10-31,Primary recovery vessel and crew
+Recovery Operations,Recovery Personnel Training,U.S. Navy,"$8,000,000",Paid,Interagency Agreement,2024-11-01,2025-09-15,Specialized Orion recovery training
+Recovery Operations,Recovery Equipment,Various,"$12,000,000",Paid,Multiple,2024-06-01,2025-09-01,Orion recovery cradle and handling equipment
+Recovery Operations,Helicopter Support,U.S. Navy,"$5,000,000",Paid,Interagency Agreement,2025-10-01,2025-10-15,MH-60 helicopter operations
+EVA Systems,Axiom EMU Suits (2 units),Axiom Space,"$140,000,000",Paid,NNM20AA18C,2020-06-01,2025-07-30,Next-generation lunar EVA suits
+EVA Systems,Suit Maintenance & Logistics,Axiom Space,"$18,000,000",Paid,NNM20AA18C (addon),2024-01-01,2025-09-30,Spares and mission support
+Scientific Instruments,Portable Geological Tools,NASA Ames Research Center,"$22,000,000",Paid,Internal,2023-04-01,2025-07-15,Hammers drills sample containers
+Scientific Instruments,Seismic Monitoring Equipment,Jet Propulsion Laboratory,"$28,000,000",Paid,Internal,2022-09-01,2025-06-30,Lunar seismometer array
+Scientific Instruments,Ice Drilling System,Honeybee Robotics,"$18,000,000",Paid,NNM21AA72D,2021-10-01,2025-05-20,ISRU demonstration equipment
+Scientific Instruments,Sample Analysis Equipment,Goddard Space Flight Center,"$12,000,000",Paid,Internal,2023-01-01,2025-06-15,Portable spectrometers and analyzers
+Scientific Instruments,Cameras & Imaging Systems,Malin Space Science Systems,"$8,000,000",Paid,NNM22AA33E,2022-06-01,2025-07-01,4K video and high-resolution still cameras
+Scientific Instruments,Radiation Monitoring,Langley Research Center,"$7,000,000",Paid,Internal,2022-11-01,2025-06-20,Surface and crew radiation dosimeters
+Habitat Systems,Lunar Surface Habitat Alpha,Lockheed Martin Space,"$55,000,000",Paid,NNM20AA94C,2020-12-01,2025-07-31,Inflatable habitat module 40 cubic meters
+Habitat Systems,Environmental Control (Habitat),Paragon Space Development,"$12,000,000",Paid,NNM21AA23D,2021-05-01,2025-06-25,Life support for habitat
+Habitat Systems,Power Systems (Solar Arrays),Orbital ATK,"$8,000,000",Paid,NNM21AA56E,2021-07-15,2025-06-10,Deployable solar panels for habitat
+Sample Return,Cryogenic Sample Containers,Sierra Space,"$22,000,000",Paid,NNM21AA88B,2021-11-01,2025-07-20,Preserve ice samples at <-80°C
+Sample Return,Sample Handling Tools,Various,"$8,000,000",Paid,Multiple,2022-02-01,2025-06-30,Specialized collection and stowage tools
+Sample Return,Return Containers,Lockheed Martin,"$10,000,000",Paid,NNM22AA11C,2022-04-01,2025-07-01,Pristine sample return containers for Orion
+Communications,Lunar Relay Communications,Jet Propulsion Laboratory,"$38,000,000",Paid,Internal,2023-01-01,2025-10-31,Gateway and direct-to-Earth links
+Communications,Ground Stations Upgrade,NASA GSFC / DSN,"$32,000,000",Paid,Internal,2022-06-01,2025-08-31,Enhanced ground station capabilities
+Program Management,Program Integration,NASA HQ Artemis Program Office,"$55,000,000",Paid,Internal,2021-01-01,2025-12-31,Overall program management
+Program Management,Systems Engineering,Various Contractors,"$28,000,000",Paid,Multiple,2021-06-01,2025-10-31,Systems integration and testing
+Program Management,Safety & Mission Assurance,NASA Safety Centers,"$17,000,000",Paid,Internal,2022-01-01,2025-10-31,Safety reviews and risk management
+Public Affairs,Public Outreach & Education,NASA Office of Communications,"$12,000,000",Paid,Internal,2024-01-01,2026-06-30,Media events educational materials
+Insurance,Mission Insurance,Various Insurers,"$28,000,000",Paid,Multiple,2024-06-01,2025-10-31,Comprehensive mission coverage
+Contingency Reserve,Unallocated Contingency,NASA (Reserve),"$145,000,000",Reserved,N/A,2021-01-01,2025-12-31,Program contingency (3% of total budget)
+TOTAL,,,,"$4,870,000,000",,,,

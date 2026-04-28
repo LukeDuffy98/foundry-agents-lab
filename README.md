@@ -8,11 +8,13 @@ Your lab credentials (username and password) are provided in **Lab 0, Step 3**. 
 
 This workshop is a guided, UI-only lab covering Azure AI Foundry and AI Agents. You will not need to write code or use a command line at any point.
 
+**Workshop Theme:** You'll build an AI agent that specializes in **NASA's Artemis III lunar mission** (September-October 2025). This mission is ideal for demonstrating knowledge grounding because it occurred **after GPT-4o's training cutoff** — the model has no information about it. You'll experience firsthand how providing knowledge documents transforms an agent from saying "I don't know" to providing detailed, accurate information.
+
 By the end of the session, you should have:
 
-1. Created a model deployment in Azure AI Foundry.
-2. Built and configured a single AI agent with clear instructions.
-3. Grounded the agent with a knowledge source.
+1. Verified the shared `gpt-4o` model deployment and confirmed it has no knowledge of Artemis III.
+2. Built and configured an AI agent with clear instructions focused on the Artemis III mission.
+3. Grounded the agent with comprehensive Artemis III knowledge documents (mission overview, crew biographies, budget data).
 4. Shaped its behaviour through instruction refinement.
 5. Extended the agent with a tool.
 6. Applied guardrails and content filters.
@@ -25,9 +27,9 @@ By the end of the session, you should have:
 | Lab | Title | Purpose | Time |
 |---|---|---|---|
 | **Lab 0** | Orientation | Set expectations and confirm access | ~5 min |
-| **Lab 1** | Verify The Shared Model Deployment | Confirm the `gpt-4o` model is available — raw capability with no role or boundaries | ~5 min |
-| **Lab 2** | Create an Agent + Instructions | Give the model a role, scope, and limits | ~10 min |
-| **Lab 3** | Add Knowledge | Ground the agent in approved content | ~10 min |
+| **Lab 1** | Verify The Shared Model Deployment | Confirm the `gpt-4o` model exists and has **no knowledge of Artemis III** | ~5 min |
+| **Lab 2** | Create an Agent + Instructions | Give the model a role (Artemis III assistant) — still no knowledge | ~10 min |
+| **Lab 3** | Add Knowledge | Upload Artemis III documents and transform the agent with grounding | ~10 min |
 | **Lab 4** | Refine Instructions | Shape tone, format, and refusal behaviour | ~8 min |
 | **Lab 5** | Add a Tool | Make the agent act, not just answer | ~10 min |
 | **Lab 6** | Guardrails | Build enterprise trust with content filters | ~7 min |
@@ -55,12 +57,17 @@ You should already have:
 
 1. **Lab account and credentials** — Your username and password are provided in Lab 0, Step 3.
 2. **Azure subscription access** — Your lab account has the necessary permissions.
-3. **Personal Azure AI Foundry project** — Auto-provisioned and accessible via the desktop launcher.
+3. **Personal Azure AI Foundry project** — Auto-provisioned and accessible via the portal.
 4. **Shared `gpt-4o` model deployment** — Pre-configured and ready to use (deployment name: **`gpt-4o`**).
-5. **Workshop knowledge file** — Available in the `assets` folder for the grounding step.
+5. **Artemis III knowledge files** — Available in the `assets` folder for the grounding step:
+   - Mission overview document (5,500+ words)
+   - Crew biographies (7,000+ words)
+   - Budget spreadsheet ($4.87B breakdown)
 6. **Shared Azure OpenAI resource** — 50 TPM capacity shared across all workshop participants.
 
 > **Important:** You will **not** create new model deployments or Azure OpenAI resources. You will use the shared `gpt-4o` deployment that is already configured.
+
+> **Why Artemis III?** This mission took place in September-October 2025, which is **after GPT-4o's training data cutoff**. This makes it perfect for demonstrating knowledge grounding — the model has zero information about this mission, so responses will rely entirely on the knowledge documents you upload.
 
 ## Important Working Rules
 
@@ -289,11 +296,11 @@ A model is raw capability — no role, no memory, no boundaries. This session sh
 
 ## Overview
 
-Before you can build an agent, you need to understand that a **model** and an **agent** are not the same thing. This lab verifies that the shared model deployment is available and ready for you to use.
+Before you can build an agent, you need to understand that a **model** and an **agent** are not the same thing. This lab verifies that the shared model deployment is available and demonstrates that **GPT-4o has no knowledge of the Artemis III mission** — setting up the need for knowledge grounding in Lab 3.
 
 > **Lab duration:** ~5 minutes  
 > **Format:** Portal only  
-> **Core goal:** Confirm the shared `gpt-4o` deployment is healthy and understand that it's raw capability with no role or boundaries yet.
+> **Core goal:** Confirm the shared `gpt-4o` deployment is healthy and prove the model has no information about Artemis III.
 
 ## Key Concept
 
@@ -351,9 +358,21 @@ An **agent** is what you'll build on top of this model in the next lab.
    - It's general-purpose and has no knowledge of the workshop context
    - There are no guardrails or boundaries applied yet
 
-5. **Do not save this conversation.** Close the playground and return to the **Models + endpoints** page.
+5. Now try asking about the workshop topic to see what the model knows:
 
-> **What you should notice:** The raw model is capable but generic. It doesn't know who it's talking to or what it's supposed to help with. That's what you'll add in the next lab by creating an agent.
+   ```text
+   Tell me about the Artemis III lunar mission that landed at Shackleton Crater in 2025.
+   ```
+
+6. Observe the response carefully:
+   - The model will likely say it **doesn't have information** about this specific mission
+   - It may mention Artemis program plans but **won't have details** about the September-October 2025 mission
+   - It might state its knowledge cutoff date and cannot provide recent information
+   - **This is expected!** GPT-4o's training data ended before this mission, so the model has zero knowledge about it
+
+7. **Do not save this conversation.** Close the playground and return to the **Models + endpoints** page.
+
+> **What you should notice:** The raw model is capable but generic. It doesn't know who it's talking to or what it's supposed to help with. More importantly, it has **no knowledge of the Artemis III mission** that we'll be working with in this workshop. That's what you'll add in Lab 3 by providing knowledge documents.
 
 ### Step 5 — Confirm You Cannot Create New Deployments
 
@@ -381,10 +400,12 @@ An **agent** is what you'll build on top of this model in the next lab.
 You now understand that the **`gpt-4o`** deployment is raw capability. It can respond to questions, but it has:
 - ❌ No specific role or purpose
 - ❌ No memory of previous conversations
-- ❌ No knowledge beyond its training data
+- ❌ No knowledge beyond its training data (which ended before the Artemis III mission)
 - ❌ No guardrails or content filters (at the agent level)
 
-In the next lab, you will create an **agent** that wraps this model with instructions, giving it a role, scope, and behavioral boundaries.
+**Critical learning:** When you asked about the Artemis III mission, the model couldn't provide specific details because this mission took place in September-October 2025 — **after GPT-4o's training cutoff**. The model has **zero knowledge** of this mission, making it perfect for demonstrating how knowledge grounding works.
+
+In the next lab, you will create an **agent** that wraps this model with instructions, giving it a role and behavioral boundaries. Then in Lab 3, you'll add knowledge documents that will enable the agent to answer detailed questions about Artemis III.
 
 ***
 
@@ -392,17 +413,17 @@ In the next lab, you will create an **agent** that wraps this model with instruc
 
 ## Overview
 
-In this lab you will create an AI agent, attach your model deployment, and write the first set of instructions. You will then run a baseline test to see how instructions immediately change behaviour.
+In this lab you will create an AI agent specialized in NASA's Artemis III lunar mission. You'll attach the model deployment and write instructions that define the agent's role. You'll then test the agent and discover that **GPT-4o has no knowledge of this mission** — setting up the need for knowledge documents in Lab 3.
 
 > **Lab duration:** ~10 minutes  
 > **Format:** Portal only  
-> **Core goal:** Create a named agent with a clear role, attach the workshop model, add instructions, and run a first test.
+> **Core goal:** Create a named agent with instructions focused on Artemis III, and confirm the model has no knowledge of this mission yet.
 
 ## Key Concept
 
 > **Same model. Noticeably different behaviour.**
 
-Instructions define the agent's role, scope, tone, and limits. Adding them is the first act of control you exercise over the raw model.
+Instructions define the agent's role, scope, tone, and limits. Adding them is the first act of control you exercise over the raw model. But instructions alone don't add knowledge — you'll discover the model knows nothing about Artemis III until you provide documents in Lab 3.
 
 ## Before You Start
 
@@ -465,14 +486,18 @@ Now that the setup is complete, you'll create your own properly-configured agent
 1. In the **Name** or **Agent name** field, enter a clear, unique name that includes your student identifier. For example:
 
    ```text
-   WorkshopAgent-[LabUsernamePrefix]
+   ArtemisAgent-[LabUsernamePrefix]
+   ```
+   
+   Or:
+   
+   ```text
+   ArtemisIII-Assistant-student42
    ```
 
-   Replace `[LabUsernamePrefix]` if you are creating multiple agents across this lab.
+   Replace `[LabUsernamePrefix]` or `student42` with your actual identifier if you are creating multiple agents across this lab.
 
-  
-
-2. **Why unique names matter:** If multiple solutions or people use generic names like "MyAgent", you won't be able to identify yours easily later.
+2. **Why unique names matter:** If multiple students use generic names like "MyAgent", you won't be able to identify yours easily later. Using "Artemis" in the name also makes it clear what this agent specializes in.
 
 
 ### Step 5 — Add System Instructions
@@ -481,26 +506,27 @@ Now that the setup is complete, you'll create your own properly-configured agent
 2. Click inside the field and enter the following instructions **exactly as shown**:
 
    ```text
-   You are a professional business assistant for a workshop scenario.
-   Your role is to help users understand business and technical information clearly and concisely.
+   You are an information assistant specializing in NASA's Artemis III lunar mission.
+   Your role is to provide accurate, detailed information about the Artemis III mission that took place in September-October 2025.
    
    IMPORTANT BOUNDARIES:
-   - Only answer questions related to business processes, Azure AI Foundry, and workshop topics.
+   - Only answer questions related to the Artemis III mission, its crew, technical specifications, and mission outcomes.
    - Do NOT respond to requests for creative writing, stories, poems, or fiction.
-   - Do NOT invent facts, figures, or recommendations.
-   - If you do not know the answer, say so clearly rather than guessing.
-   - If a request is outside your scope, politely decline and remind the user of your role.
+   - Do NOT invent or fabricate facts, figures, dates, or mission details.
+   - If you do not have specific information in your knowledge sources, say so clearly rather than guessing.
+   - If a request is outside your scope (e.g., other NASA missions, unrelated space topics), politely decline and remind the user of your role.
+   - Do NOT provide information about missions other than Artemis III unless they are directly relevant context.
    
-   Be polite and professional in all responses.
+   Be accurate, informative, and professional in all responses.
    ```
 
 3. Review the instructions once more. Notice that they define:
-   - ✅ **A role**: "professional business assistant"
-   - ✅ **A scope**: "business and technical information, Azure AI Foundry, workshop topics"
-   - ✅ **Explicit boundaries**: "Do NOT respond to creative writing, stories, poems, or fiction"
-   - ✅ **A limit**: "do not invent facts"
+   - ✅ **A role**: "information assistant specializing in NASA's Artemis III lunar mission"
+   - ✅ **A scope**: "Artemis III mission, its crew, technical specifications, and mission outcomes"
+   - ✅ **Explicit boundaries**: "Do NOT respond to creative writing" and "Do NOT provide information about other missions"
+   - ✅ **A limit**: "do not invent or fabricate facts, figures, dates, or mission details"
    - ✅ **A behavior**: "politely decline if request is outside scope"
-   - ✅ **A tone**: "polite and professional"
+   - ✅ **A tone**: "accurate, informative, and professional"
 
 > **Why explicit boundaries matter:** General instructions like "Stay on topic" can be ambiguous. By explicitly stating what the agent should NOT do ("Do NOT respond to requests for creative writing..."), you give the model clear, actionable guidance.
 
@@ -527,35 +553,44 @@ The agent configuration **auto-saves** as you make changes — there is no manua
 2. Enter the following prompt:
 
    ```text
-   What is the difference between a model and an agent in Azure AI Foundry?
+   Tell me about the Artemis III mission.
    ```
 
 3. Click **Send** or press Enter.
 4. Wait for the agent to respond (may take 5-15 seconds depending on shared capacity).
 5. Read the response carefully. Notice:
-   - ✅ The answer is **structured and professional** (role)
-   - ✅ The agent **stays within scope** (focused on Azure AI Foundry context)
-   - ✅ The tone is **polite and clear** (tone enforcement)
+   - ❌ The agent will likely say **"I don't have information"** about Artemis III
+   - ✅ The agent **stays within its role** (acknowledges its scope is Artemis III)
+   - ✅ The agent **doesn't fabricate details** (follows the boundary: "do not invent facts")
+   - ✅ The tone is **informative and professional**
 
-6. **Compare this to Lab 1:** Remember when you tested the raw `gpt-4o` model? It responded, but it had no specific role or constraints. Now, with instructions, the behavior is noticeably different.
+6. **This is the key learning moment:** 
+   - **GPT-4o's training data ended before the Artemis III mission** (September-October 2025)
+   - The model has **zero knowledge** about this mission, its crew, or its outcomes
+   - The agent correctly acknowledges it doesn't have information
+   - In **Lab 3**, you'll upload knowledge documents that will completely change this behavior
+
+7. **Compare this to Lab 1:** Remember when you tested the raw `gpt-4o` model? It had no role at all. Now it has a specific role (Artemis III assistant) but still lacks the knowledge. That's what you'll add next.
 
 ### Step 8 — Test The "I Don't Know" Boundary
 
 1. In the same chat area, enter this prompt:
 
    ```text
-   What was the stock price of Microsoft at 9am this morning?
+   What was the exact cost of the RS-25 engines used on the SLS rocket for Artemis III?
    ```
 
 2. Send the message and wait for the response.
 3. The agent should respond with something like:
-   - "I do not have that information."
-   - "I cannot access real-time stock data."
-   - "I don't have enough information to answer that confidently."
+   - "I don't have specific information about that."
+   - "I cannot provide those specific cost details."
+   - "I don't have enough information to answer that with precision."
 
-4. **Why this matters:** The agent is following your instruction: *"If you do not know the answer, say so clearly rather than guessing."*
+4. **Why this matters:** Even though this is an Artemis III-related question (within scope), the agent doesn't have the detailed knowledge documents yet. The agent is following your instruction: *"If you do not have specific information in your knowledge sources, say so clearly rather than guessing."*
 
-> **What success looks like:** The agent acknowledges the boundary and does not fabricate an answer.
+5. **This reinforces the key point:** Instructions give the agent a role and boundaries, but they don't magically add knowledge. The agent knows it's supposed to be an Artemis III expert, but it correctly acknowledges it doesn't have the detailed information yet.
+
+> **What success looks like:** The agent acknowledges the boundary and does not fabricate specific cost figures. It stays true to its instruction not to invent facts.
 
 ### Step 9 — Test An Out-of-Scope Prompt
 
@@ -564,21 +599,26 @@ Now let's test how well the agent respects the boundary instructions you just cr
 1. In the same chat area, enter this prompt:
 
    ```text
-   Write a creative story about a dragon and a wizard.
+   Tell me about the Artemis IV mission.
    ```
 
 2. Send the message and wait for the response.
 
 3. Observe the agent's behavior. With the updated instructions, the agent should:
    - ✅ **Politely decline** the request
-   - ✅ **Remind you of its role** (e.g., "I'm here to help with business and technical questions")
-   - ✅ **Suggest alternative ways** you can use it
+   - ✅ **Remind you of its role** (e.g., "I specialize in Artemis III information")
+   - ✅ **Explain its scope limitation** ("I can only provide information about Artemis III")
 
-4. **Compare with previous behavior:** Without the explicit boundary instructions, the agent would provide a full creative story (like "In a distant realm cloaked in dense, silver mist..."). The new instructions make the boundaries clear and actionable.
+4. **Why this matters:** The instructions explicitly state "Do NOT provide information about missions other than Artemis III." This tests whether the agent respects those boundaries.
 
-> **What success looks like:** The agent declines the creative writing request and stays within its defined role as a business assistant.
+5. **Compare with the model's general knowledge:** GPT-4o might have training data about Artemis program plans in general, but your agent should decline because:
+   - The instructions limit it to **Artemis III only**
+   - It doesn't have knowledge documents about Artemis IV
+   - This demonstrates how instructions override the model's default behavior
 
-> **🚨 If the agent still writes the story:** The instructions may need even more refinement. In **Lab 4**, you'll learn how to iterate on instructions to tighten boundaries further. For now, note the behavior and continue.
+> **What success looks like:** The agent declines to discuss Artemis IV and reminds you it specializes in Artemis III information only.
+
+> **🚨 If the agent still provides general Artemis program information:** The instructions may need even more refinement. In **Lab 4**, you'll learn how to iterate on instructions to tighten boundaries further. For now, note the behavior and continue.
 
 ## Troubleshooting
 
@@ -592,7 +632,14 @@ Now let's test how well the agent respects the boundary instructions you just cr
 
 ## Key Message
 
-You now have an agent with a role and boundaries. The model is the same one from Lab 1. The instructions are what made the behaviour different. In the next lab, you will add knowledge to make responses more specific.
+You now have an agent with a specific role: an Artemis III mission information assistant. The model is the same one from Lab 1, but the instructions have shaped its behavior. 
+
+**Critical insight:** Even with clear instructions about being an Artemis III expert, the agent **cannot answer questions about the mission** because:
+- ❌ GPT-4o's training data ended before the September-October 2025 Artemis III mission
+- ❌ The model has **zero knowledge** of the mission details, crew, outcomes, or achievements
+- ❌ Instructions define the role and boundaries, but **they don't add knowledge**
+
+In the next lab, you will add knowledge documents that contain comprehensive information about Artemis III. You'll see the agent transform from saying "I don't have information" to providing detailed, accurate answers grounded in the uploaded documents. This will demonstrate the power of **Retrieval-Augmented Generation (RAG)** — the core technique that makes AI agents useful in enterprise scenarios.
 
 ***
 
@@ -616,21 +663,56 @@ Knowledge grounding means the agent can draw on approved content rather than gen
 
 1. ✅ You have completed Labs 1 and 2.
 2. ✅ You have a saved agent with instructions.
-3. ✅ You have the workshop knowledge file available. 
-   - **File location**: Check the `assets` folder on your lab desktop, or download from the URL provided by your facilitator.
-   - **Expected filename**: Something like `workshop-knowledge.txt`, `foundry-guide.pdf`, or similar (confirm with your facilitator).
+3. ✅ You have the workshop knowledge files available in the `assets` folder.
+   - **File location**: The workshop includes comprehensive documentation about NASA's **Artemis III lunar mission**
+   - **Available files**:
+     - `artemis-mission-overview.docx` or `.pdf` - Complete mission details (launch, timeline, achievements, budget)
+     - `artemis-crew-biographies.docx` or `.pdf` - Detailed crew profiles for all four astronauts
+     - `artemis-mission-budget.xlsx` - Financial breakdown with vendor contracts and costs
+   
+> **Why Artemis III?** This mission took place in September-October 2025 (after GPT-4o's training cutoff). This makes it perfect for demonstrating how knowledge grounding works — the model has no information about this mission, so responses will rely entirely on the uploaded documents.
 
 ## Step-By-Step Instructions
 
-### Step 1 — Locate The Workshop Knowledge File
+### Step 1 — Locate The Workshop Knowledge Files
 
-1. On your lab desktop, open the **Files** file manager (look for a folder icon on the desktop or taskbar).
-2. Navigate to the location specified by your facilitator. Common locations:
-   - Desktop folder: `Desktop\assets\workshop-knowledge.txt`
-   - Downloads folder: `Downloads\workshop-knowledge.txt`
-3. Confirm the file exists and note its exact name and location.
+The workshop includes comprehensive documentation about NASA's **Artemis III lunar mission** (September-October 2025). This mission is ideal for demonstrating knowledge grounding because it occurred after GPT-4o's training cutoff — the model has no information about it.
 
-> **🚨 Important:** Do not upload a random document. Use only the official workshop knowledge file provided by your facilitator. Uploading unrelated content will make Lab 3 results inconsistent.
+**Available knowledge files in the `assets` folder**:
+
+1. **artemis-mission-overview.docx** (or `.pdf`)
+   - Complete mission details from launch to splashdown
+   - Technical specifications (SLS rocket, Orion spacecraft, Human Landing System)
+   - Mission timeline and surface operations
+   - Scientific achievements and sample collection
+   - Budget breakdown ($4.87 billion)
+   - 5,500+ words of comprehensive technical information
+
+2. **artemis-crew-biographies.docx** (or `.pdf`)
+   - Detailed profiles of all four crew members:
+     - Commander Dr. Sarah Chen (first woman on the Moon, geologist, USAF test pilot)
+     - Pilot James Rodriguez (first Latino on the Moon, Navy aviator)
+     - Dr. Yuki Tanaka (JAXA, materials scientist, first Japanese beyond LEO)
+     - Lt Col Emma Williams (ESA, RAF test pilot, robotics officer)
+   - Education, military service, NASA/JAXA/ESA careers
+   - Mission roles, training, awards, publications
+   - 7,000+ words of biographical data
+
+3. **artemis-mission-budget.xlsx**
+   - Detailed financial breakdown by category
+   - Vendor contracts and payment status
+   - Contract numbers and dates
+   - Total mission cost: $4.87 billion
+
+**To access the files**:
+
+1. In your browser, open a new tab.
+2. Navigate to your lab's file sharing location, or:
+3. If facilitator provided a direct link, open it to download the files.
+4. Select **one of the document files** to upload (mission overview or crew biographies - choose either `.docx` or `.pdf` format).
+5. Note the file's location for the upload step.
+
+> **📝 For this lab**: You only need to upload **one** knowledge file. Choose either the mission overview or crew biographies document (not the Excel file for now — we'll explore multiple files in later labs).
 
 ### Step 2 — Return To Your Agent In Foundry
 
@@ -703,46 +785,82 @@ Knowledge grounding means the agent can draw on approved content rather than gen
 
 ### Step 9 — Ask A Knowledge-Specific Question
 
-1. Ask a question about a topic **specifically covered in the knowledge file**. Your facilitator should provide a suggested test question, or use:
+1. Ask a question about information **specifically covered in the knowledge file you uploaded**. 
+
+**If you uploaded the mission overview document**, try:
 
    ```text
-   Can you explain the main concepts covered in the workshop?
+   Tell me about the Artemis III mission. When did it launch and what were the key achievements?
+   ```
+
+**If you uploaded the crew biographies document**, try:
+
+   ```text
+   Who was the commander of Artemis III, and what made them qualified for this role?
    ```
 
 2. Read the response and look for:
-   - ✅ **Specific details** that match the knowledge file content
-   - ✅ A **citation** showing which file the information came from (UI may display "[From: workshop-knowledge.txt]" or similar)
+   - ✅ **Specific details** that match the knowledge file content (launch dates, crew names, technical specs, etc.)
+   - ✅ A **citation** showing which file the information came from (UI may display "[From: artemis-mission-overview.docx]" or similar)
    - ✅ A more **relevant and accurate** answer compared to Lab 2
+   - ✅ Information the model couldn't have known (since Artemis III mission is after GPT-4o training cutoff)
 
-> **What success looks like:** The agent provides specific, grounded information that clearly comes from the uploaded file.
+3. Try a follow-up question to test deeper knowledge:
+
+   ```text
+   What was the total cost of the mission?
+   ```
+   
+   OR
+   
+   ```text
+   What was James Rodriguez's role on the mission?
+   ```
+
+> **What success looks like:** The agent provides specific, detailed information about Artemis III that clearly comes from the uploaded file. The model would have no way to answer these questions without the knowledge source, proving that grounding works.
 
 ### Step 10 — Ask A Boundary Question
 
 1. Test whether the agent still respects boundaries for information it doesn't have:
 
    ```text
-   What is happening in this area right now, as of today?
+   What happened on the Artemis IV mission?
+   ```
+   
+   OR
+   
+   ```text
+   Tell me about other NASA missions that happened in 2026.
    ```
 
-2. The agent should respond with:
-   - "I do not have information about current events."
-   - "The knowledge file doesn't cover real-time updates."
+2. The agent should respond with something like:
+   - "I don't have information about Artemis IV in the provided documents."
+   - "The knowledge source only covers Artemis III."
+   - "I can only provide information from the documents uploaded, which don't include details about other missions."
    - Or similar boundary-respecting language.
 
-> **Why this matters:** Adding knowledge **improves** relevance but doesn't make the agent omniscient. It should still acknowledge what it doesn't know.
+> **Why this matters:** Adding knowledge **improves** relevance for specific topics but doesn't make the agent omniscient. It should still acknowledge what it doesn't know. The agent now has deep knowledge about Artemis III but should not make up information about other missions.
 
 ## Troubleshooting
 
 | Issue | Resolution |
 |---|---|
-| File upload fails | File may be too large or an unsupported type. Confirm with facilitator. Supported types: `.txt`, `.pdf`, `.docx`, `.md` (varies by deployment). |
+| File upload fails | File may be too large or an unsupported type. Supported types: `.txt`, `.pdf`, `.docx`, `.md`. Try the PDF version if DOCX fails. |
 | File status stays in "Processing" for >5 minutes | Refresh the browser page. If still processing, ask your facilitator — there may be a service issue. |
 | The agent doesn't seem to use the file | Confirm: (1) File status is Ready, (2) You clicked "New conversation" to clear old chat, (3) The knowledge source is attached to the agent (check agent details). |
 | Responses are identical to Lab 2 | The knowledge file may not be attached properly. Re-open the agent, check the Files/Knowledge section, and verify the file appears in the list. |
+| Agent says it doesn't know about Artemis III | Confirm the file finished processing and shows "Ready" status. Try asking a different question like "What documents do you have access to?" to confirm the file is attached. |
 
 ## Key Message
 
-Knowledge grounding improves relevance without changing the underlying model. The agent is now drawing on approved content rather than relying solely on its training. In the next lab, you will refine the instructions to further shape how the agent responds.
+Knowledge grounding transforms your agent from general-purpose to domain-specific. Your agent now has **deep, accurate knowledge about Artemis III** — information the underlying GPT-4o model has never seen. This demonstrates the power of Retrieval-Augmented Generation (RAG): the agent retrieves relevant information from your documents and grounds its responses in that content.
+
+**What you've proven:**
+- ✅ The agent can answer detailed questions about content not in its training data
+- ✅ Knowledge grounding works without retraining or fine-tuning the model
+- ✅ The agent still respects boundaries and won't make up information about topics not in the knowledge source
+
+In the next lab, you will refine the instructions to further shape how the agent uses this knowledge and responds to users.
 
 ***
 

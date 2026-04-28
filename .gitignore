@@ -27,3 +27,4 @@ recordings/
 # Python cache
 __pycache__/
 *.pyc
+convert_csv_to_xlsx.py
